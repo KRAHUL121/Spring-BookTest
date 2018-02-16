@@ -37,7 +37,11 @@ public class BookControllerTest {
 		given(bookRepository.saveAndFlush(EXISTING_Book)).willReturn(EXISTING_Book);
 		assertThat(bookController.updateBook(EXISTING_Book, Book_ID)).isSameAs(EXISTING_Book);
 	}
-
+	@Test
+	public void whenReadingdingBookItShouldReturnIdBook() {
+		given(bookRepository.findOne(Book_ID)).willReturn(EXISTING_Book);
+		assertThat(bookController.findBook(Book_ID)).isSameAs(EXISTING_Book);
+	}
 	@Test
 	public void whenReadingdingBookItShouldReturnAllBooks() {
 		given(bookRepository.findAll()).willReturn(Arrays.asList(EXISTING_Book, ANOTHER_Book));
